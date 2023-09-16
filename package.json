@@ -1,8 +1,8 @@
 {
-  "name": "next-firebase-starter",
+  "name": "Rare_Front_End",
   "private": true,
   "version": "1.0.0",
-  "author": "Trinity Christiana",
+  "author": "Mark, Robert, Cole, Steven, Michael ",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
