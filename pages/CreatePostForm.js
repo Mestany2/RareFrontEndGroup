@@ -11,6 +11,7 @@ import { createPost, updatePost } from '../ApiCalls/PostCalls';
 import { checkUser } from '../utils/auth';
 
 const initialState = {
+  Title: '',
   ImageURL: '',
   Content: '',
   Approved: false,
@@ -19,7 +20,7 @@ const initialState = {
 export default function PostForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const [category, setCategory] = useState([]);
-  const [rareUser, setRareUser] = useState([]);
+  const [rareUser, setRareUser] = useState({});
   const router = useRouter();
   const { user } = useAuth();
   console.warn(user);
@@ -55,6 +56,19 @@ export default function PostForm({ obj }) {
       <h2 className="text-white mt-5">{obj.id ? 'Update' : 'Create'} Post</h2>
 
       <Row className="mb-3">
+        <Form.Group as={Col} controlId="formGridCharName">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter Title"
+            name="Title"
+            value={formInput.Title}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+      </Row>
+      <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridContent">
           <Form.Label>Write the Post</Form.Label>
           <Form.Control
@@ -85,16 +99,16 @@ export default function PostForm({ obj }) {
           name="CategoriesId"
           onChange={handleChange}
           className="mb-3"
-          value={category.CategoriesId}
+          value={obj.CategoriesId}
         >
           <option value="">Select a Category</option>
           {
-            category.map((categories) => (
+            category.map((Categories) => (
               <option
-                key={categories.Id}
-                value={categories.Id}
+                key={Categories.id}
+                value={Categories.id}
               >
-                {categories.Label}
+                {Categories.label}
               </option>
             ))
           }
@@ -108,6 +122,8 @@ export default function PostForm({ obj }) {
 PostForm.propTypes = {
   obj: PropTypes.shape({
     id: PropTypes.number,
+    Title: PropTypes.string,
+    CategoriesId: PropTypes.number,
     ImageURL: PropTypes.string,
     Content: PropTypes.string,
     Approved: PropTypes.bool,
