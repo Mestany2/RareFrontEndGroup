@@ -6,8 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useAuth } from '../utils/context/authContext';
-import { getAllCategories } from '../ApiCalls/CategoryCalls';
-import { createPost, updatePost } from '../ApiCalls/PostCalls';
+import { createPost, updatePost, getAllCategories } from '../ApiCalls/PostCalls';
 import { checkUser } from '../utils/auth';
 
 const initialState = {
