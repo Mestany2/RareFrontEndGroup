@@ -40,11 +40,11 @@ export default function PostForm({ obj }) {
     e.preventDefault();
     if (obj.id) {
       updatePost(formInput)
-        .then(() => router.push('/'));
+        .then(() => router.push('/Feed'));
     } else {
       const payload = { ...formInput, PublicationDate: new Date(Date.now()), RareUsersId: rareUser[0].id };
       createPost(payload).then(() => {
-        router.push('/');
+        router.push('/Feed');
       });
     }
     console.warn(category);
