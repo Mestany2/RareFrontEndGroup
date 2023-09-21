@@ -1,24 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
-import { useAuth } from '../utils/context/authContext';
-import { checkUser } from '../utils/auth';
+import { deletePost } from '../ApiCalls/PostCalls';
 
-export default function PostCard({ postObj }) {
-  const { user } = useAuth();
-  const [userId, setUserId] = useState(null);
-  const checkCurrentUser = () => {
-    checkUser(user.uid).then(setUserId);
+export default function PostCard({ postObj, onUpdate, userIdCheck }) {
+  const deleteThisPost = () => {
+    if (window.confirm('Delete This Post?')) {
+      deletePost(postObj.id).then(() => onUpdate());
+    }
   };
 
-  useEffect(() => {
-    checkCurrentUser();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   let deleteJSX = null;
-  if (userId[0].id === postObj.rareUsersId) {
-    deleteJSX = <button className="delete-post-btn" type="button">Delete</button>;
+  if (userIdCheck === postObj.rareUsersId) {
+    deleteJSX = <button className="delete-post-btn" onClick={deleteThisPost} type="button">Delete</button>;
   }
   return (
     <>
@@ -51,4 +45,6 @@ PostCard.propTypes = {
     content: PropTypes.string,
     approved: PropTypes.bool,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  userIdCheck: PropTypes.number.isRequired,
 };

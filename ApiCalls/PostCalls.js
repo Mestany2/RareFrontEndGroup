@@ -76,10 +76,22 @@ const getAllCategories = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deletePost = (id) => new Promise((resolve, reject) => {
+  fetch(`https://localhost:7100/api/posts/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
   updatePost,
   createPost,
   getAllPost,
   checkUser,
   getAllCategories,
+  deletePost,
 };
