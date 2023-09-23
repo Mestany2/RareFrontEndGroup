@@ -20,3 +20,36 @@ a {
 body {
   background-color: #88effd;
 }
+
+.post-card-cont {
+  border: solid white 2px;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: #e5e5e5bd;
+  max-width: 500px;
+  min-width: 500px;
+}
+
+.post-body-cont {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-content-container {
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: space-between; /* Align content and button to each end vertically */
+}
+
+.delete-post-btn {
+  margin-top: auto; /* Push the button to the bottom of the container */
+  max-width: 75px;
+}
+
+#post-image {
+  width: 200px;
+  height: 200px;
+  margin-left: 10px;
+}
