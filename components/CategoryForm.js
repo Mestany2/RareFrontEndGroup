@@ -3,17 +3,20 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { createCategory } from '../api/categoriesData.js';
+import { useRouter } from 'next/router.js';
 
 function CategoryForm({ }) {
   const [formData, setFormData] = useState({});
-
+  const router = useRouter();
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = {
       ...formData,
     };
     console.warn('my payload', payload);
-    createCategory(payload);
+    createCategory(payload).then(() => {
+      router.push('/allCategories');
+    });
   };
 
   return (
