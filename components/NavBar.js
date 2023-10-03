@@ -31,6 +31,7 @@ export default function NavBar() {
             </Link> */}
             <Link passHref href="/delete-me">
               <Nav.Link>Delete Me</Nav.Link>
+            </Link>
             <Link passHref href="/CreatePostForm">
               <Nav.Link>Create A Post</Nav.Link>
             </Link>
