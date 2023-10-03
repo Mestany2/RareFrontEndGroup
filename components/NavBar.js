@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable */
 import React from 'react';
 import Link from 'next/link';
 import {
@@ -26,12 +26,11 @@ export default function NavBar() {
             <Link className="ps-relative" passHref href="/allCategories">
               <Nav.Link className="nav-topic">All Categories</Nav.Link>
             </Link>
-            <Link className="ps-relative" passHref href="/categories/new">
+            {/* <Link className="ps-relative" passHref href="/categories/new">
               <Nav.Link className="nav-topic">Create Category</Nav.Link>
-            </Link>
+            </Link> */}
             <Link passHref href="/delete-me">
               <Nav.Link>Delete Me</Nav.Link>
-            </Link>
             <Link passHref href="/CreatePostForm">
               <Nav.Link>Create A Post</Nav.Link>
             </Link>
